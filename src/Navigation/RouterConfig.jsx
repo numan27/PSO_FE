@@ -18,6 +18,18 @@ function RouterConfig() {
         path={PATH.LANDING_PAGE}
         element={<PublicRoute element={<WEB_PAGES.LANDING_PAGE />} />}
       />
+      <Route
+        path={PATH.STATS}
+        element={<PublicRoute element={<WEB_PAGES.STATS />} />}
+      />
+      <Route
+        path={PATH.REGISTER}
+        element={<PublicRoute element={<WEB_PAGES.REGISTER />} />}
+      />
+      <Route
+        path={PATH.SUBMIT_REGISTRATION}
+        element={<PublicRoute element={<WEB_PAGES.SUBMIT_REGISTRATION />} />}
+      />
 
       {/* NO PAGE FOUND */}
       <Route path={PATH.NOPAGE} element={<WEB_PAGES.NO_PAGE_FOUND />} />

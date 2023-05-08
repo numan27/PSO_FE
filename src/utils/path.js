@@ -2,10 +2,13 @@ const PATH = {
   NOPAGE: "*",
 
   //  AUTH PATHS
-  LOGIN: "/",
+  LOGIN: "/login",
 
 
-  LANDING_PAGE: "/home",
+  LANDING_PAGE: "/",
+  STATS: "/stats",
+  REGISTER: "/register",
+  SUBMIT_REGISTRATION: "/submit-registration",
 
   //  USER PATHS
   USER_DASHBOARD: "/user/dashboard",
