@@ -1,11 +1,21 @@
-import React from 'react'
+import { startTransition } from "react";
 import { Container, Row, Col, Table, Form, Button, Dropdown } from "react-bootstrap";
 import AppLayout from '../../components/Layout/AppLayout';
+import { useNavigate } from "react-router-dom";
 import { CgAsterisk } from 'react-icons/cg';
 import { BsChevronDown } from 'react-icons/bs';
+import PATH from "../../utils/path";
 
 
 const ApplicantDetails = () => {
+    const navigate = useNavigate();
+
+    const handleNavigate = (path) => {
+        startTransition(() => {
+            navigate(path);
+        });
+    }
+
     return (
         <AppLayout>
             <Container fluid className="px-sm-5 mb-5 px-3 applicant_details">
@@ -88,11 +98,25 @@ const ApplicantDetails = () => {
                                     <Form.Control rows={5} as="textarea" className='rounded-0' placeholder="Enter remarks" />
                                 </Form.Group>
                             </Col>
+
+                            {/* Buttons */}
                             <div className='d-flex flex-lg-row flex-column justify-content-end'>
-                                <Button variant="danger" size="lg" className="rounded-0 fw-semibold py-2 py-sm-3 px-0 px-md-5">Objection / Refer back</Button>
-                                <Button size="lg" className="rounded-0 fw-semibold py-2 py-sm-3 px-5 bg_primary mx-lg-5 mx-0 my-lg-0 my-3 ">Verify</Button>
-                                <Button variant="warning" size="lg" className="rounded-0 fw-semibold py-2 py-sm-3 px-5">Register</Button>
+
+                                <Button variant="danger" size="lg" className="rounded-0 fw-semibold py-2 py-sm-3 px-0 px-md-5">Objection / Refer back
+                                </Button>
+
+
+                                <Button size="lg" className="rounded-0 fw-semibold py-2 py-sm-3 px-5 btn_primary mx-lg-5 mx-0 my-lg-0 my-3 "
+                                    onClick={() => handleNavigate(PATH.NOC)}
+                                >
+                                    Verify
+                                </Button>
+                                <Button variant="warning" size="lg" className="rounded-0 fw-semibold py-2 py-sm-3 px-5">
+                                    Register
+                                </Button>
                             </div>
+
+                            {/* Checkboxes */}
                             <div className='d-flex flex-wrap justify-content-between mt-4 mb-5 checkBox_wrapper'>
                                 <Form.Group className='d-flex align-items-center mt-2'>
                                     <Form.Check aria-label="option 1" />

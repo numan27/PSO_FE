@@ -1,7 +1,17 @@
+import { startTransition } from "react";
 import { Button, Container } from "react-bootstrap";
 import AppLayout from '../../components/Layout/AppLayout'
+import { useNavigate } from "react-router-dom";
+import PATH from "../../utils/path";
 
 const NOC = () => {
+    const navigate = useNavigate();
+
+    const handleNavigate = (path) => {
+        startTransition(() => {
+            navigate(path);
+        });
+    }
 
     return (
         <AppLayout>
@@ -52,7 +62,11 @@ const NOC = () => {
 
 
                         <div className='d-flex justify-content-end ms-auto mt-3'>
-                            <Button variant="warning" size="lg" className="rounded-0 w-25 mobile_width fw-semibold py-sm-3 py-2 mt-3 px-5">Back</Button>
+                            <Button
+                                onClick={() => handleNavigate(PATH.APPLICANT_DETAILS)}
+                                variant="warning" size="lg" className="rounded-0 w-25 mobile_width fw-semibold py-sm-3 py-2 mt-3 px-5">
+                                Back
+                            </Button>
                         </div>
                     </div>
 

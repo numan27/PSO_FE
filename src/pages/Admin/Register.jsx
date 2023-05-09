@@ -55,7 +55,7 @@ const Register = () => {
               ))}
 
               <div className="d-grid w-75 md_width px-0 px-lg-5 mt-3 mt-md-5 pt-5 mx-auto">
-                <Button onClick={() => handleNavigate(PATH.SUBMIT_REGISTRATION)} className='submit_btn border rounded-3 py-3 fs-2' type="submit">
+                <Button onClick={() => handleNavigate(PATH.SUBMIT_REGISTRATION)} className='submit_btn border rounded-3 py-3 fs-2' type="button">
                   Submit Application
                 </Button>
               </div>

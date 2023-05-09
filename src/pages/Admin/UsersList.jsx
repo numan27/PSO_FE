@@ -14,7 +14,7 @@ const UsersList = () => {
                 </div>
 
                 <div className='my-5'>
-                    <Table striped bordered>
+                    <Table responsive striped bordered className='userList'>
                         <thead className='bg_primary text-white'>
                             <tr>
                                 <th className='text-center'>Sr. No.</th>
@@ -32,7 +32,7 @@ const UsersList = () => {
                                         startTransition(() => {
 
                                         });
-                                    }}> 
+                                    }}>
                                         Muhammad Jameel
                                     </Link>
                                 </td>
@@ -42,14 +42,30 @@ const UsersList = () => {
                             </tr>
                             <tr>
                                 <td className='text-center'>2</td>
-                                <td>Muhammad Kamran</td>
+                                <td>
+                                    <Link to="/applicant-details" className='text-decoration-none' onClick={() => {
+                                        startTransition(() => {
+
+                                        });
+                                    }}>
+                                        Muhammad Kamran
+                                    </Link>
+                                </td>
                                 <td>Bahawalpur</td>
                                 <td>Bahawalpur City</td>
                                 <td>24/10/2022 11:31</td>
                             </tr>
                             <tr>
                                 <td className='text-center'>3</td>
-                                <td>Malik Arif</td>
+                                <td>
+                                    <Link to="/applicant-details" className='text-decoration-none' onClick={() => {
+                                        startTransition(() => {
+
+                                        });
+                                    }}>
+                                        Malik Arif
+                                    </Link>
+                                </td>
                                 <td>Bahawalpur</td>
                                 <td>Hasilpur</td>
                                 <td>17/10/2022 11:39</td>

@@ -57,7 +57,7 @@ function Home() {
       <section>
         <Row className="policy_section text_primary d-flex justify-content-center align-items-center">
           <Col lg={5} md={10} sm={10} xs={12} className="mt-xl-5 pt-5 px-4 px-sm-0">
-            <h2 className="fw-semibold fs-3 mb-4">Register a Petrol Pump
+            <h2 className="fw-semibold fs-3 mb-4 mt-xl-0 mt-sm-5 mt-0">Register a Petrol Pump
             </h2>
             <h1 className="fw-bold mb-4 text-white">Policy/ Procedure for
               Establishment of
