@@ -1,14 +1,14 @@
-import { Col, Container, Row, Form, Button } from "react-bootstrap"
-import IMAGES from "../assets/images"
+import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import IMAGES from "../assets/images";
 
 function Navbar({ showTrackApplication }) {
     return (
         <div className="bg_primary text-white header">
             <Container fluid className="px-xl-5 px-3">
-                <Row className="py-sm-4 py-3">
+                <Row className="py-sm-5 py-3">
                     <Col lg={6}>
                         <div className="d-flex mb-lg-0 mb-3 align-items-center justify-content-lg-start justify-content-center logoWrapper">
-                            <img src={IMAGES.LOGO} width="100" className="me-3 logo" alt="logo" />
+                                <img src={IMAGES.LOGO} width="100" className="me-3 logo" alt="logo" />
                             <div className="">
                                 <h6 className="fw-light fs-5 mb-1 mobileText_p">Petrol Pumps</h6>
                                 <h2 className="fw-semibold mb-0 mobileText_h">Registration Portral</h2>

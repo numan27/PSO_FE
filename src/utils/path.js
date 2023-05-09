@@ -9,6 +9,9 @@ const PATH = {
   STATS: "/stats",
   REGISTER: "/register",
   SUBMIT_REGISTRATION: "/submit-registration",
+  USERS_LIST: "/users-list",
+  APPLICANT_DETAILS: "/applicant-details",
+  NOC: "/noc",
 
   //  USER PATHS
   USER_DASHBOARD: "/user/dashboard",

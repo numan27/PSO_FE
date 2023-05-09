@@ -30,6 +30,18 @@ function RouterConfig() {
         path={PATH.SUBMIT_REGISTRATION}
         element={<PublicRoute element={<WEB_PAGES.SUBMIT_REGISTRATION />} />}
       />
+      <Route
+        path={PATH.USERS_LIST}
+        element={<PublicRoute element={<WEB_PAGES.USERS_LIST />} />}
+      />
+      <Route
+        path={PATH.APPLICANT_DETAILS}
+        element={<PublicRoute element={<WEB_PAGES.APPLICANT_DETAILS />} />}
+      />
+      <Route
+        path={PATH.NOC}
+        element={<PublicRoute element={<WEB_PAGES.NOC />} />}
+      />
 
       {/* NO PAGE FOUND */}
       <Route path={PATH.NOPAGE} element={<WEB_PAGES.NO_PAGE_FOUND />} />
