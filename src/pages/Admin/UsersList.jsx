@@ -57,7 +57,7 @@ const UsersList = () => {
             </Table>
           </div>
         ) : (
-          <div>No data to display</div>
+          <div className='fs-3 fw-semibold'>No data to display</div>
         )}
       </Container>
     </AppLayout>
@@ -65,3 +65,4 @@ const UsersList = () => {
 }
 
 export default UsersList;
+ 
