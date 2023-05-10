@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, startTransition } from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Container, Table } from "react-bootstrap";
 import { AiOutlineRight } from "react-icons/ai"
 import AppLayout from '../../components/Layout/AppLayout'
@@ -6,6 +7,15 @@ import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 const UsersList = () => {
+  const navigate = useNavigate();
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    startTransition(() => {
+      navigate('/applicant-details');
+    });
+  };
+
   const [formDataArray, setFormDataArray] = useState([]);
 
   useEffect(() => {
@@ -44,7 +54,7 @@ const UsersList = () => {
                   <tr key={data.id}>
                     <td className='text-center'>{index + 1}</td>
                     <td>
-                      <Link to="/applicant-details" className='text-decoration-none'>
+                      <Link onClick={handleClick} className='text-decoration-none'>
                         {data.name}
                       </Link>
                     </td>
