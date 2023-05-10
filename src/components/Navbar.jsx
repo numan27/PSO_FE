@@ -5,9 +5,9 @@ function Navbar({ showTrackApplication }) {
     return (
         <div className="bg_primary text-white header">
             <Container fluid className="px-xl-5 px-3">
-                <Row className="py-sm-4 py-3 d-flex justify-content-between">
+                <Row className="py-4 d-flex justify-content-between">
                     <Col xl={6}>
-                        <div className="d-flex mb-xl-0 mb-3 align-items-center justify-content-xl-start justify-content-center logoWrapper py-2">
+                        <div className="d-flex mb-xl-0 mb-3 align-items-center justify-content-xl-start justify-content-center logoWrapper">
                             <img src={IMAGES.LOGO} width="120" className="me-3 logo" alt="logo" />
                             <div className="">
                                 <h6 className="fw-light fs-5 mb-1 mobileText_p">Petrol Pumps</h6>

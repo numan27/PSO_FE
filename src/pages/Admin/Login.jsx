@@ -1,18 +1,49 @@
-import { startTransition } from "react";
+import { useState, startTransition } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AppLayout from '../../components/Layout/AppLayout'
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import PATH from "../../utils/path";
+import { useForm } from 'react-hook-form';
 
 
 const Login = () => {
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleNavigate = (path) => {
-      startTransition(() => {
-        navigate(path);
-      });
-    }
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        mode: "onBlur",
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    });
+
+    const onSubmit = (data) => {
+        startTransition(() => {
+            setIsLoading(true);
+            if (data.email === "admin@ppr.com" && data.password === "Password@123") {
+                localStorage.setItem("user", JSON.stringify(data));
+                navigate('/stats');
+            } else {
+                alert("Invalid credentials");
+                setIsLoading(false);
+            }
+        });
+    };
+
+    const validateEmail = (value) => {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(value) || "Invalid email address";
+    };
+
+    const validatePassword = (value) => {
+        const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+        return regex.test(value) || "Invalid password";
+    };
+
 
     return (
         <AppLayout>
@@ -24,18 +55,41 @@ const Login = () => {
                                 <div className="mb-3 mt-md-2">
                                     <h2 className="fw-bold mb-4 text-uppercase text-center text_secondary">LOGIN</h2>
                                     <div className="mb-3">
-                                        <Form>
+                                        <Form onSubmit={handleSubmit(onSubmit)}>
                                             <Form.Group className="mb-4" controlId="formBasicEmail">
-                                                <Form.Control type="text" className='py-3 rounded-0' placeholder="Enter User Id" />
+                                                <Form.Control
+                                                    type="text"
+                                                    className="py-3 rounded-0"
+                                                    placeholder="Enter User Id"
+                                                    {...register("email", { validate: validateEmail })}
+                                                />
+                                                {errors.email && (
+                                                    <Form.Text className="text-danger">
+                                                        {errors.email.message}
+                                                    </Form.Text>
+                                                )}
                                             </Form.Group>
 
                                             <Form.Group
                                                 className="mb-4"
-                                                controlId="formBasicPassword">
-                                                <Form.Control type="password" className='py-3 rounded-0' placeholder="Enter Password" />
+                                                controlId="formBasicPassword"
+                                            >
+                                                <Form.Control
+                                                    type="password"
+                                                    className="py-3 rounded-0"
+                                                    placeholder="Enter Password"
+                                                    {...register("password", {
+                                                        validate: validatePassword,
+                                                    })}
+                                                />
+                                                {errors.password && (
+                                                    <Form.Text className="text-danger">
+                                                        {errors.password.message}
+                                                    </Form.Text>
+                                                )}
                                             </Form.Group>
                                             <div className="d-grid">
-                                                <Button onClick={() => handleNavigate(PATH.STATS)} className='bg_primary_2 block_btn py-sm-3 py-2 border-0 rounded-0' type="submit">
+                                                <Button className='bg_primary_2 block_btn py-sm-3 py-2 border-0 rounded-0' type="submit">
                                                     Login
                                                 </Button>
                                             </div>

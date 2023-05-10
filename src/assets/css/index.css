@@ -91,9 +91,6 @@ a {
 .row {
   --bs-gutter-x: 0 !important;
 }
-/* .textAlign{
-  width: 90%;
-} */
 
 .mainHeading{
   font-size: 36px;
@@ -140,10 +137,6 @@ a {
 
   .policy_section h2 {
     font-size: 4vw !important;
-  }
-
-  .applicant_details th {
-    width: 50% !important;
   }
 
 }
@@ -353,11 +346,13 @@ input[type="file"] {
   font-weight: 400;
 }
 
-.applicant_details .table_1 th {
-  width: 45%;
-}
 tbody, td, tfoot, th, thead, tr {
-padding-top: 20px !important;
+padding-top: 15px !important;
+padding-bottom: 15px !important;
+white-space: nowrap !important;
+}
+tbody, td{
+white-space: nowrap !important;
 }
 
 .dropdown-toggle::after {
