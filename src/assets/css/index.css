@@ -47,7 +47,7 @@ hr {
 }
 
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 /* -------------------------------------------------------------------------------------------------------------------------------------- */
@@ -382,4 +382,11 @@ white-space: nowrap !important;
   font-size: 18px;
   color: #54595E;
   font-weight: 500;
+}
+.statsCard:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transform: scale(1.03);
+}
+.statsCard{
+  transition: all 0.3s ease-in-out;
 }

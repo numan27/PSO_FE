@@ -5,7 +5,8 @@ const StatsList = [
         img: IMAGES.STATS_1,
         title: "Signup Requests",
         count: "3",
-        color: "#2196F3"
+        color: "#2196F3",
+        link: "/users-list"
     },
     {
         img: IMAGES.STATS_2,
@@ -23,7 +24,8 @@ const StatsList = [
         img: IMAGES.STATS_4,
         title: "Observation",
         count: "3",
-        color: "#607D8B"
+        color: "#607D8B",
+       
     },
     {
         img: IMAGES.STATS_5,

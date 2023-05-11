@@ -20,7 +20,7 @@ const SubmitRegistration = () => {
                     <h2 className='fw-bold'>Thanks for submitting your application.</h2>
                     <p className='fs-4'>After Verification of your documents. We Will inform you accordingly.</p>
                     <div className='w-50 text-center'>
-                        <Button variant="warning" size="lg" className="rounded-0 fw-semibold w-50 mobile_width md_width py-3 mt-3 px-5" onClick={() => handleNavigate(PATH.REGISTER)}>Back</Button>
+                        <Button variant="warning" size="lg" className="rounded-0 fw-semibold w-50 mobile_width md_width py-3 mt-3 px-5" onClick={() => handleNavigate(PATH.LANDING_PAGE)}>Back</Button>
                     </div>
                 </div>
             </Container>

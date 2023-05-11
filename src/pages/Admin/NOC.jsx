@@ -14,7 +14,7 @@ const NOC = () => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout isLoggedIn={true}>
             <Container fluid className="px-md-5 px-3 py-4">
                 <div className="mx-lg-5 mx-0 my-sm-5 my-3 noc">
                     <h2 className='fw-bold fs-1 text-capitalize'>procedure of issuance of no onjection certificate (noc) fro installation of petrol pump/ fuel retail outlet:-</h2>

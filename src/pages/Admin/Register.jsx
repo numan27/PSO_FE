@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, startTransition } from "react";
 import { Col, Button, Row, Container, Form } from "react-bootstrap";
 import { CgAsterisk } from "react-icons/cg";
 import { FaCheck } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import AppLayout from '../../components/Layout/AppLayout';
 import INPUT_FILE_LIST from './InputFileList';
+import PATH from "../../utils/path";
 
 const Register = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    startTransition(() => {
+      navigate(path);
+    });
+  }
+
   const [formData, setFormData] = useState({
     name: "",
     fatherName: "",
@@ -48,7 +58,6 @@ const Register = () => {
       setIsFileUploaded(false);
     }
   };
-
 
 
 
@@ -113,34 +122,45 @@ const Register = () => {
               </Form.Group>
 
               {INPUT_FILE_LIST.map((item, index) => (
-                <Form.Group key={index} className="mb-4 px-0 px-lg-4 md_flexCol d-flex align-items-center justify-content-center">
-                  <Form.Label className='w-50 md_width fs-4 pe-md-5 px-0'>{item.label}</Form.Label>
-                  <div className='w-50 md_width inputFile rounded'>
+                <Form.Group key={index} className="mb-4 px-0 px-lg-4 md_flexCol d-flex align-items-center justify-content-center cursor-pointer">
+                  <Form.Label className='w-50 md_width fs-4 pe-md-5 px-0 cursor-pointer'>{item.label}</Form.Label>
+                  <div className='w-50 md_width inputFile rounded cursor-pointer'>
                     <Form.Control
                       type="file"
                       id={`fileInput-${index}`}
                       name={`fileInput-${index}`}
-                      className=''
+                      className='cursor-pointer'
                       onChange={(e) => handleFileChange(e, index)}
                       accept="application/pdf"
-                      required
+                      required={index === 0}
                     />
-                    <label htmlFor={`fileInput-${index}`} className='w-100 px-3 text-center'>
+                    <label htmlFor={`fileInput-${index}`} className='w-100 px-3 text-center cursor-pointer'>
                       {formData.files[index] && formData.files[index].type === 'application/pdf' ? (
-                        <FaCheck className="me-2 text-success" />
-                      ) : null}
-                      Upload PDF document
+                        <span className="mtext-success cursor-pointer d-flex align-items-center justify-content-center"> 
+                        <FaCheck className="text-success me-3" /> File Uploaded Successfully 
+                        </span>
+                      ) : (
+                        "Upload PDF document"
+                      )}
                     </label>
                   </div>
                 </Form.Group>
               ))}
 
 
+
               <div className="d-grid w-75 md_width px-0 px-lg-5 mt-3 mt-md-5 pt-5 mx-auto">
                 <Button
                   className='submit_btn border rounded-3 py-3 fs-2'
                   type="submit"
-                  disabled={!formData.name || !formData.fatherName || !formData.phoneNumber || !formData.cnic || formData.files.length < INPUT_FILE_LIST.length}
+                  disabled={
+                    !formData.name ||
+                    !formData.fatherName ||
+                    !formData.phoneNumber ||
+                    !formData.cnic ||
+                    (formData.files.length < 1 || !formData.files[0])
+                  }
+                  onClick={() => handleNavigate(PATH.SUBMIT_REGISTRATION)}
                 >
                   Submit Application
                 </Button>

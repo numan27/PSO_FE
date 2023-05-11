@@ -9,10 +9,10 @@ import { v4 as uuidv4 } from 'uuid';
 const UsersList = () => {
   const navigate = useNavigate();
 
-  const handleClick = (event) => {
+  const handleClick = (event, name, cnic) => {
     event.preventDefault();
     startTransition(() => {
-      navigate('/applicant-details');
+      navigate(`/applicant-details?name=${name}&cnic=${cnic}`);
     });
   };
 
@@ -20,21 +20,21 @@ const UsersList = () => {
 
   useEffect(() => {
     const existingFormData = JSON.parse(localStorage.getItem("formData")) || [];
-    const updatedFormDataArray  = [
-        ...(Array.isArray(existingFormData) ? existingFormData : [])
-      ].map(data => ({
-        ...data,
-        id: uuidv4()
-      }));
-      
+    const updatedFormDataArray = [
+      ...(Array.isArray(existingFormData) ? existingFormData : [])
+    ].map(data => ({
+      ...data,
+      id: uuidv4()
+    }));
+
     setFormDataArray(updatedFormDataArray);
   }, []);
 
   return (
-    <AppLayout>
+    <AppLayout isLoggedIn={true}>
       <Container fluid className="px-sm-5 px-3">
-        <div className='d-flex justify-content-end mt-sm-5 mt-2 mb-3 mx-sm-0 mx-4 mobileText_align'>
-          <a className='' href="">Welcome Deputy Commissioner, Bahawalpur<AiOutlineRight /></a>
+        <div className='d-flex justify-content-end mt-sm-5 mt-4 mb-3 mx-sm-0 mx-4 mobileText_align'>
+          <Link className='' to="">Welcome Deputy Commissioner, Bahawalpur<AiOutlineRight /></Link>
         </div>
 
         {formDataArray.length > 0 ? (
@@ -54,7 +54,7 @@ const UsersList = () => {
                   <tr key={data.id}>
                     <td className='text-center'>{index + 1}</td>
                     <td>
-                      <Link onClick={handleClick} className='text-decoration-none'>
+                      <Link onClick={(event) => handleClick(event, data.name, data.cnic)} className='text-decoration-none'>
                         {data.name}
                       </Link>
                     </td>
@@ -67,7 +67,7 @@ const UsersList = () => {
             </Table>
           </div>
         ) : (
-          <div className='fs-3 fw-semibold'>No data to display</div>
+          <div className='fs-2 fw-semibold text-center'>No data to display</div>
         )}
       </Container>
     </AppLayout>
@@ -75,4 +75,3 @@ const UsersList = () => {
 }
 
 export default UsersList;
- 

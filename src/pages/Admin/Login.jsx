@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import AppLayout from '../../components/Layout/AppLayout'
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { useForm } from 'react-hook-form';
-
+import { BiHide, BiShow } from 'react-icons/bi';
+import { toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -24,28 +26,27 @@ const Login = () => {
     const onSubmit = (data) => {
         startTransition(() => {
             setIsLoading(true);
-            if (data.email === "admin@ppr.com" && data.password === "Password@123") {
+            if (data.email === "admin@ppr.com" && data.password === "password@123") {
                 localStorage.setItem("user", JSON.stringify(data));
                 navigate('/stats');
             } else {
-                alert("Invalid credentials");
+                toast.error("Invalid credentials", {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 3000,
+                });
                 setIsLoading(false);
             }
         });
     };
+    
 
     const validateEmail = (value) => {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(value) || "Invalid email address";
     };
 
-    const validatePassword = (value) => {
-        const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
-        return regex.test(value) || "Invalid password";
-    };
-
-
     return (
+        
         <AppLayout>
             <Container>
                 <Row className="h_screen d-flex justify-content-center align-items-center">
@@ -70,24 +71,22 @@ const Login = () => {
                                                 )}
                                             </Form.Group>
 
-                                            <Form.Group
-                                                className="mb-4"
-                                                controlId="formBasicPassword"
-                                            >
-                                                <Form.Control
-                                                    type="password"
-                                                    className="py-3 rounded-0"
-                                                    placeholder="Enter Password"
-                                                    {...register("password", {
-                                                        validate: validatePassword,
-                                                    })}
-                                                />
-                                                {errors.password && (
-                                                    <Form.Text className="text-danger">
-                                                        {errors.password.message}
-                                                    </Form.Text>
-                                                )}
+                                            <Form.Group className="mb-4" controlId="formBasicPassword">
+                                                <div className="input-group d-flex align-items-center">
+                                                    <Form.Control
+                                                        type={showPassword ? "text" : "password"}
+                                                        className="py-3 rounded-0"
+                                                        placeholder="Enter Password"
+                                                        {...register("password")}
+                                                    />
+                                                    <div className="input-group-append px-0">
+                                                        <div className="input-group-text cursor-pointer px-0" onClick={() => setShowPassword(!showPassword)}>
+                                                            {showPassword ? <BiHide className='fs-4' /> : <BiShow className='fs-4' />}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </Form.Group>
+
                                             <div className="d-grid">
                                                 <Button className='bg_primary_2 block_btn py-sm-3 py-2 border-0 rounded-0' type="submit">
                                                     Login
@@ -101,6 +100,8 @@ const Login = () => {
                         </Card>
                     </Col>
                 </Row>
+
+
             </Container>
 
         </AppLayout>

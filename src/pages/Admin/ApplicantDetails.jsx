@@ -4,10 +4,19 @@ import AppLayout from '../../components/Layout/AppLayout';
 import { useNavigate } from "react-router-dom";
 import { CgAsterisk } from 'react-icons/cg';
 import { BsChevronDown } from 'react-icons/bs';
+import { useLocation } from 'react-router-dom';
 import PATH from "../../utils/path";
 
 
 const ApplicantDetails = () => {
+
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+  
+    const name = queryParams.get('name');
+    const cnic = queryParams.get('cnic');
+
+
     const navigate = useNavigate();
 
     const handleNavigate = (path) => {
@@ -17,7 +26,7 @@ const ApplicantDetails = () => {
     }
 
     return (
-        <AppLayout>
+        <AppLayout isLoggedIn={true}>
             <Container fluid className="px-sm-5 mb-5 px-3 applicant_details">
                 <Row>
                     <Col xl={9} lg={11} md={11} sm={11} className='mx-auto'>
@@ -30,7 +39,7 @@ const ApplicantDetails = () => {
                                     <thead>
                                         <tr>
                                             <th className='w-50'>Name</th>
-                                            <td>Muhammad Jameel</td>
+                                            <td>{name}</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -52,7 +61,7 @@ const ApplicantDetails = () => {
                                         </tr>
                                         <tr>
                                             <th>CNIC</th>
-                                            <td>Attached</td>
+                                            <td>{cnic}</td>
                                         </tr>
                                     </tbody>
                                 </Table>

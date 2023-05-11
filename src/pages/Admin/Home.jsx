@@ -17,7 +17,7 @@ function Home() {
 
   return (
 
-    <AppLayout showTrackApplication={true}>
+    <AppLayout showTrackApplication={true} isLoggedIn={false}>
 
       {/* Hero */}
       <section>
@@ -79,17 +79,17 @@ function Home() {
           <Col lg={8} className="">
             <div className="checkWrapper px-4 text-center pt-5 pt-lg-0 mb-5 mb-lg-0 mb-md-2">
 
-              <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column align-items-center cursor-pointer">
                 <img src={IMAGES.CHECK_1} alt="check" width="220" height="220" className="" />
                 <h3 className="fs-5 fw-bold mt-3 mb-0">Checklist</h3>
               </div>
 
-              <div className="d-flex flex-column align-items-center my-3 my-md-0">
+              <div className="d-flex flex-column align-items-center my-3 my-md-0 cursor-pointer">
                 <img src={IMAGES.CHECK_2} alt="check" width="220" height="220" className="" />
                 <h3 className="fs-5 fw-bold mt-3 mb-0">Frequently Asked <br /> Questions</h3>
               </div>
 
-              <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column align-items-center cursor-pointer">
                 <img src={IMAGES.CHECK_3} alt="check" width="220" height="220" className="" />
                 <h3 className="fs-5 fw-bold mt-3 mb-0">Pending NOCs</h3>
               </div>
