@@ -72,8 +72,9 @@ hr {
   background-color: #047E1F;
   border: none !important;
 }
+
 .btn_primary:hover {
-  background-color:#079C28 !important
+  background-color: #079C28 !important
 }
 
 a {
@@ -92,7 +93,7 @@ a {
   --bs-gutter-x: 0 !important;
 }
 
-.mainHeading{
+.mainHeading {
   font-size: 36px;
 }
 
@@ -172,10 +173,12 @@ a {
     grid-template-columns: repeat(1, 1fr) !important;
     gap: 30px !important;
   }
-  .noc p{
+
+  .noc p {
     font-size: 4vw !important;
   }
-  .noc h2{
+
+  .noc h2 {
     font-size: 6vw !important;
   }
 
@@ -346,13 +349,20 @@ input[type="file"] {
   font-weight: 400;
 }
 
-tbody, td, tfoot, th, thead, tr {
-padding-top: 15px !important;
-padding-bottom: 15px !important;
-white-space: nowrap !important;
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+  white-space: nowrap !important;
 }
-tbody, td{
-white-space: nowrap !important;
+
+tbody,
+td {
+  white-space: nowrap !important;
 }
 
 .dropdown-toggle::after {
@@ -383,10 +393,19 @@ white-space: nowrap !important;
   color: #54595E;
   font-weight: 500;
 }
-.statsCard:hover{
+
+.statsCard:hover {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transform: scale(1.03);
 }
-.statsCard{
+
+.statsCard {
   transition: all 0.3s ease-in-out;
+}
+
+.eyeIcon {
+  background-color: transparent;
+  right: 2px;
+  top: 12px;
+  border: none;
 }

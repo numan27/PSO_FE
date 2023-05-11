@@ -72,7 +72,7 @@ const Login = () => {
                                             </Form.Group>
 
                                             <Form.Group className="mb-4" controlId="formBasicPassword">
-                                                <div className="input-group d-flex align-items-center">
+                                                <div className="input-group d-flex align-items-center position-relative">
                                                     <Form.Control
                                                         type={showPassword ? "text" : "password"}
                                                         className="py-3 rounded-0"
@@ -80,7 +80,7 @@ const Login = () => {
                                                         {...register("password")}
                                                     />
                                                     <div className="input-group-append px-0">
-                                                        <div className="input-group-text cursor-pointer px-0" onClick={() => setShowPassword(!showPassword)}>
+                                                        <div className="input-group-text eyeIcon cursor-pointer px-1 position-absolute" onClick={() => setShowPassword(!showPassword)}>
                                                             {showPassword ? <BiHide className='fs-4' /> : <BiShow className='fs-4' />}
                                                         </div>
                                                     </div>
